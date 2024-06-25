@@ -6,7 +6,7 @@ BriefBot is an article summarizer application connected to OpenAI's GPT model us
 
 Users can input the URL of a lengthy article into the app's input element, and the AI will quickly generate a summary of the entire article.
 
-![BriefBot UI](/BriefBot-UI.png)
+![BriefBot UI](/public/BriefBot-UI.png)
 
 ## Tech Stack
 
