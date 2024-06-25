@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { linkIcon, loader, tick } from "../index";
+import { linkIcon } from "../index";
 import { useLazyGetSummaryQuery } from "../services/article";
 import BrowseUrlHistory from "./BrowseUrlHistory";
+import DisplayResults from "./DisplayResults";
 
 const Demo = () => {
   const [article, setArticle] = useState({
@@ -77,6 +78,7 @@ const Demo = () => {
       </div>
 
       {/* Display Results */}
+      <DisplayResults article={article} isFetching={isFetching} error={error} />
     </section>
   );
 };

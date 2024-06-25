@@ -1,6 +1,15 @@
-import { copy } from "../index";
+import { useState } from "react";
+import { copy, tick } from "../index";
 
 const BrowseUrlHistory = ({ setArticle, allArticles }) => {
+  const [copied, setCopied] = useState("");
+
+  const handleCopy = (copyUrl) => {
+    setCopied(copyUrl);
+    navigator.clipboard.writeText(copyUrl);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
   return (
     <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
       {allArticles.map((article, i) => (
@@ -9,10 +18,10 @@ const BrowseUrlHistory = ({ setArticle, allArticles }) => {
           onClick={() => setArticle(article)}
           key={`link-${i}`}
         >
-          <div className="copy_btn">
+          <div className="copy_btn" onClick={() => handleCopy(article.url)}>
             <img
-              src={copy}
-              alt="copy icon"
+              src={copied === article.url ? tick : copy}
+              alt={`${copied === article.url ? "tick" : "copy"} icon`}
               className="w-[40%] h-[40%] object-contain"
             />
           </div>
